@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monster Grid Puzzle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Monster Grid Puzzle</h1>
+  <div id="level-indicator"></div>
+  <p class="instructions">Queue your moves using arrows, then click <strong>▶ Run</strong> to reach the monster!</p>
+  
+  <div id="grid"></div>
+
+  <div class="command-container">
+    <div class="command-label">Command Queue:</div>
+    <div id="command-bar"></div>
+  </div>
+
+  <div class="controls">
+    <div class="arrow-pad">
+      <button class="btn-up" onclick="addCommand('UP')">⬆️</button>
+      <button class="btn-left" onclick="addCommand('LEFT')">⬅️</button>
+      <button class="btn-down" onclick="addCommand('DOWN')">⬇️</button>
+      <button class="btn-right" onclick="addCommand('RIGHT')">➡️</button>
+    </div>
+
+    <div class="action-buttons">
+      <button class="clear-btn" onclick="clearQueue()">❌ Clear</button>
+      <button class="reset-btn" onclick="resetGame()">🔄 Reset</button>
+      <button class="lock-btn" onclick="resetProgress()">🔒 Lock Levels</button>
+      <button class="action-btn" onclick="runCommands()">▶ Run</button>
+    </div>
+  </div>
+  <div id="win-modal">
+  <div class="modal-content">
+
+    <h2>🎉 Level Complete!</h2>
+
+    <div class="stars">⭐⭐⭐</div>
+
+    <p>Great job reaching the monster!</p>
+
+    <div class="modal-buttons">
+      <button onclick="replayLevel()">🔄 Replay</button>
+      <button onclick="nextLevel()">▶ Next Level</button>
+    </div>
+
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

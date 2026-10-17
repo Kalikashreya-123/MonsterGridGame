@@ -1,0 +1,326 @@
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #1e1e2e;
+      color: #cdd6f4;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      color: #cba6f7;
+    }
+
+    p.instructions {
+      margin-bottom: 20px;
+      color: #a6adc8;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(6, 55px);
+      grid-template-rows: repeat(6, 55px);
+      gap: 6px;
+      background-color: #313244;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .cell {
+      background-color: #45475a;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      transition: background-color 0.2s ease;
+    }
+
+    .command-container {
+      margin: 20px 0;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .command-label {
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #a6adc8;
+    }
+
+    #command-bar {
+      min-height: 48px;
+      background-color: #181825;
+      border: 2px dashed #89b4fa;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      overflow-x: auto;
+      font-size: 20px;
+      white-space: nowrap;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .arrow-pad {
+      display: grid;
+      grid-template-columns: repeat(3, 50px);
+      grid-template-rows: repeat(2, 50px);
+      gap: 6px;
+    }
+
+    .arrow-pad button {
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #89b4fa;
+      color: #11111b;
+      cursor: pointer;
+      transition: transform 0.1s ease, background-color 0.2s ease;
+    }
+
+    .arrow-pad button:hover {
+      background-color: #b4befe;
+    }
+
+    .arrow-pad button:active {
+      transform: scale(0.92);
+    }
+
+    .btn-up { grid-column: 2; grid-row: 1; }
+    .btn-left { grid-column: 1; grid-row: 2; }
+    .btn-down { grid-column: 2; grid-row: 2; }
+    .btn-right { grid-column: 3; grid-row: 2; }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .action-buttons button {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .action-buttons button:hover {
+      opacity: 0.9;
+    }
+
+    .action-btn {
+      background-color: #a6e3a1;
+      color: #11111b;
+    }
+
+    .reset-btn {
+      background-color: #f38ba8;
+      color: #11111b;
+    }
+
+    .clear-btn {
+      background-color: #fab387;
+      color: #11111b;
+    }
+    .level-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.level-btn {
+  background-color: #45475a;
+  color: #cdd6f4;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #585b70;
+  cursor: pointer;
+}
+
+.level-btn.active {
+  background-color: #cba6f7;
+  color: #11111b;
+  font-weight: bold;
+}
+.level-btn.locked {
+  background-color: #313244;
+  color: #6c7086;
+  border-color: #45475a;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.star-rating {
+  font-size: 32px;
+  margin: 10px 0;
+  letter-spacing: 4px;
+}
+#win-modal {
+  display: none;
+}
+/*
+*/
+/* Dark Realistic Dungeon Atmosphere */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  color: #f8f8f2;
+
+  /* Layered realistic stone brick pattern + dynamic torch lighting overlay */
+  background-color: #0b0c10;
+  background-image: 
+    /* Dual torch glow effect from top left and right */
+    radial-gradient(circle at 20% 15%, rgba(255, 115, 0, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 80% 15%, rgba(255, 115, 0, 0.18) 0%, transparent 40%),
+    /* Vignette dark shadow around edges */
+    radial-gradient(circle at 50% 50%, transparent 20%, rgba(0, 0, 0, 0.85) 100%),
+    /* Fine stone brick noise grid */
+    linear-gradient(0deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+}
+
+/* Glowing Dungeon Title */
+h1 {
+  margin-bottom: 8px;
+  color: #ffb86c;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* Multi-layered fiery glow */
+  text-shadow: 
+    0 0 10px rgba(255, 184, 108, 0.6),
+    0 0 20px rgba(255, 121, 198, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Realistic 3D Stone Dungeon Grid */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(6, 56px);
+  grid-template-rows: repeat(6, 56px);
+  gap: 6px;
+  background: linear-gradient(145deg, #12131c, #1a1b26);
+  padding: 14px;
+  border-radius: 14px;
+  /* Stone border look with outer glow and shadow */
+  border: 3px solid #383a59;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.9),
+    inset 0 0 15px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(255, 184, 108, 0.12);
+}
+
+/* Textured Stone Floor Tiles */
+.cell {
+  background: linear-gradient(135deg, #282a36, #1e1f29);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  /* Beveled edge effect to make tiles look like 3D stone slabs */
+  border-top: 1px solid #44475a;
+  border-left: 1px solid #383a59;
+  border-right: 1px solid #191a21;
+  border-bottom: 1px solid #14151e;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.05), 0 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+/* Cell hover lighting response */
+.cell:hover {
+  background: linear-gradient(135deg, #343746, #21222c);
+  border-color: #6272a4;
+  transform: translateY(-1px);
+}
+
+/* Command Queue Bar */
+#command-bar {
+  margin: 20px 0;
+  min-height: 48px;
+  min-width: 320px;
+  background-color: #0d0e15;
+  border: 2px dashed #ffb86c;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 24px;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 184, 108, 0.15);
+}
+
+/* Level Selection Buttons */
+.level-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.level-btn {
+  background: linear-gradient(180deg, #343746, #21222c);
+  color: #f8f8f2;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #6272a4;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: all 0.2s ease;
+}
+
+.level-btn:hover:not(:disabled) {
+  border-color: #ffb86c;
+  box-shadow: 0 0 12px rgba(255, 184, 108, 0.4);
+  transform: translateY(-2px);
+}
+
+.level-btn.active {
+  background: linear-gradient(180deg, #ffb86c, #ff79c6);
+  color: #11111b;
+  border-color: #ffb86c;
+  font-weight: 800;
+  box-shadow: 0 0 15px rgba(255, 184, 108, 0.5);
+}
+
+.level-btn.locked {
+  background: #181923;
+  color: #6272a4;
+  border-color: #282a36;
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+}
